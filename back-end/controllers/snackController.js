@@ -37,6 +37,21 @@ snacks.get('/:id', async (req,res)=>{
         console.log(err)
     }
 })
+//POST/CREATE
+snacks.post('/',(async(req,res)=>{
+    const {body} =req;
+    try{
+        const createdSnack = await createSnack(body);
+        if(createdSnack.id){
+            res.status(200).json(createdSnack);
+        } else {
+            res.status(500).json({error:"creation error"})
+        }
+    }catch{
+        console.log(err)
+    }
+}))
+
 
 //DELETE 
 snacks.delete("/:id",async (req,res)=>{
