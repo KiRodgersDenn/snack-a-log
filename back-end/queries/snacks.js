@@ -18,6 +18,15 @@ const getOneSnack = async(id)=>{
     }
 }
 
+const createSnack = async(snack)=>{
+    try{
+        const newSnack = await db.one("INSERT INTO snacks(id,name,image,fiber,protein,added_suger, is_healthy) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *", [snack.id , snack.name,snack.image,snack.fiber,snack.protein, snack.added_sugar,snack.is_healthy]);
+        return newSnack;
+    } catch(err){
+        return err;
+    }
+}
+
 const deleteSnack = async(id)=>{
     try{
         const deletedSnack = await db.one("DELETE FROM snacks WHERE id=$1 RETURNING *", id );
@@ -27,8 +36,11 @@ const deleteSnack = async(id)=>{
     }
 }
 
+
+
 module.exports = {
     getAllSnacks,
     getOneSnack,
+    createSnack,
     deleteSnack
 };
