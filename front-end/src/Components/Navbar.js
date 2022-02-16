@@ -12,6 +12,9 @@ return(
                 <Link to= '/snacks/new'>NEW</Link>
             </li>
             
+            <li>
+                <Link to= '/snacks'>SNACKS</Link>
+            </li>
         </ul>
     </nav>
 )

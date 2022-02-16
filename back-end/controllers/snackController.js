@@ -80,14 +80,15 @@ snacks.delete("/:id",async (req,res)=>{
 
 snacks.put("/:id", async(req,res)=>{
     const {id} = req.params;
-    const {body} = req;
+    let {body} = req;
+    body = {...body, is_healthy: confirmHealth(body), name: capitalization(body.name) }
     const updatedSnack = await updateSnack(id,body);
     if(updatedSnack.id){
-        res.status(200).json(updatedSnack);
+        res.status(200).json({success: true, "payload": updatedSnack});
     } else {
-        res.status(404).json({error: "Snack not found"})
+        res.status(404).json({success: false, "payload" : 'Snack not found'})
     }
 })
 
 
-module.exports =snacks;
+module.exports = snacks;
