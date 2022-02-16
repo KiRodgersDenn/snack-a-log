@@ -11,16 +11,11 @@ function NewSnack(){
         image: '',
         fiber: 0,
         protein: 0,
-        added_suger: 0,
+        added_sugar: 0,
         is_healthy: false
     });
 
-    const handleIncrement=()=>{
 
-    }
-    const handleDecrement=()=>{
-
-    }
     const addSnack =()=>{
         axios
             .post(`${API}/snacks`,snack)
@@ -57,7 +52,7 @@ function NewSnack(){
             
             <label htmlFor='image'>Image:</label>
             <input
-                id="url"
+                id="image"
                 type="text"
                 pattern="http[s]*://.+"
                 required
@@ -71,10 +66,31 @@ function NewSnack(){
                 id="fiber"
                 type= 'number'
                 name="fiber"
-                value={bookmark.category}
-                placeholder="educational, inspirational, ..."
+                value={snack.fiber}
+                placeholder=''
                 onChange={handleTextChange}
             />
+
+            <label htmlFor='protein'>Protein:</label>
+            <input
+                id="protein"
+                type= 'number'
+                name="protein"
+                value={snack.protein}
+                placeholder=''
+                onChange={handleTextChange}
+            />    
+
+            <label htmlFor='added_sugar'>Added Sugar:</label>
+            <input
+                id="added_sugar"
+                type= 'number'
+                name="added_sugar"
+                value={snack.added_sugar}
+                placeholder=''
+                onChange={handleTextChange}
+            />
+   
 
             </form>
         </div>

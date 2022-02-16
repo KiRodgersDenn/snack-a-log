@@ -12,7 +12,7 @@ function App() {
       <Navbar/>
       <main>
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          {/* <Route path='/' element={<Home/>}/> */}
           <Route path='/snacks' element={<AllSnacks/>}/>
           <Route path='/snacks/new' element={<NewSnack/>}/>
           <Route path='/snacks/:index' element={<ShowSnack/>}/>
